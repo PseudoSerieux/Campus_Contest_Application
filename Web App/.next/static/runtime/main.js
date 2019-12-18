@@ -5157,7 +5157,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/home/corentin/Documents/react/coincoin/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/home/corentin/Documents/react/Campus_Contest_Application/Web App/.next");
       return error;
     }
   };
