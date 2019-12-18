@@ -1,10 +1,12 @@
-import Layout from '../components/MyLayoutAtribute';
+import LayoutBack from '../components/LayoutBack';
 import Link from 'next/link';
+import Header from '../components/Header';
 import fetch from 'isomorphic-unfetch';
 import Button from '@material-ui/core/Button';
 
 const Index = props => (
-    <Layout>
+    <LayoutBack>
+        <Header />
         <h1>Batman TV Shows</h1>
         <Button variant="contained" color="primary">
             Hello World
@@ -18,7 +20,7 @@ const Index = props => (
                 </li>
             ))}
         </ul>
-    </Layout>
+    </LayoutBack>
 );
 
 Index.getInitialProps = async function() {

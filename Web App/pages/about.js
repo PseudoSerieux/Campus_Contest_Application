@@ -1,7 +1,14 @@
-import Layout from '../components/MyLayoutProps.js';
+import LayoutBack from '../components/LayoutBack';
+import Link from 'next/link';
+import Header from '../components/Header';
+import fetch from 'isomorphic-unfetch';
+import Button from '@material-ui/core/Button';
 
-const aboutPageContent = <p>This is the about page</p>;
+const About = props => (
+    <LayoutBack>
+        <Header />
+        <p>This is the about page</p>
+    </LayoutBack>
+);
 
-export default function About() {
-    return <Layout content={aboutPageContent} />;
-}
+export default About;
