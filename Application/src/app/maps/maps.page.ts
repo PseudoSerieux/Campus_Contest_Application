@@ -10,6 +10,7 @@ declare var google: any;
 })
 export class MapsPage implements OnInit {
   map: any;
+  baseUrl = 'assets/icon/';
 
   constructor(public geolocation: Geolocation) {
     this.load();
@@ -47,7 +48,7 @@ export class MapsPage implements OnInit {
   }
 
   addInfoWindowToMarker(marker) {
-    const infoWindowContent = '<div id="content">' + marker.title + '</div>';
+    const infoWindowContent = '<div id="content">' + marker.title + '</div>' + '<div>' + marker.src  + '</div>';
     const infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
     });
@@ -57,12 +58,21 @@ export class MapsPage implements OnInit {
   }
 
   addMarkerPosition() {
+    const icon = this.baseUrl + 'AppPhoto.png';
     const latLng = new google.maps.LatLng(47.273165, -1.573204);
     const marker = new google.maps.Marker({
       map: this.map,
       position: latLng,
       animation: google.maps.Animation.DROP,
-      title: 'regarde commen c tro joli!!!!!!!!!',
+      title: '<p text-center=""><strong>regarde commen c tro joli!!!!!!!!!</strong></p>',
+      src: '<img src=../../assets/picture/android-vs-ios.jpg height="150">',
+      icon: {
+        url: icon,
+        size: new google.maps.Size(32, 32),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(16, 16),
+        scaledSize: new google.maps.Size(32, 32)
+      }
     });
     this.addInfoWindowToMarker(marker);
   }
