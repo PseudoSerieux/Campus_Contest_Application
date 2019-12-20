@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>Ma randonnée</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<img src="../assets/picture/hike.jpg">
+
+  <ion-row text-center>
+
+    <ion-col text-center>
+
+    <ion-select placeholder="Localisation" class="hike-criteria">
+      <ion-select-option class="hike-choice" value="f"></ion-select-option>
+      <ion-select-option class="hike-choice" value="m"></ion-select-option>
+      <button class="button-close">Annuler</button>
+    </ion-select>
+
+    <ion-select placeholder="Accessibilité" class="hike-criteria">
+    <ion-select-option class="hike-choice" value="foot">A pied</ion-select-option>
+    <ion-select-option class="hike-choice" value="bike">En Vélo</ion-select-option>
+      <button class="button-close">Annuler</button>
+    </ion-select>
+
+    <ion-select placeholder="Duree" class="hike-criteria">
+      <ion-select-option class="hike-choice" value="f">Moins d'une heure</ion-select-option>
+      <ion-select-option class="hike-choice" value="m">Entre 1h et 2h</ion-select-option>
+      <ion-select-option class="hike-choice" value="f">Plus de 2h</ion-select-option>
+      <button class="button-close">Annuler</button>
+    </ion-select>
+
+    </ion-col>
+
+  </ion-row>
+
+
+  <div text-center>
+    <ion-button class="button-search-hike" color="success">Rechercher</ion-button>
+  </div>
+
+</ion-content>
+
+

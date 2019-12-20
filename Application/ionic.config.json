@@ -1,5 +1,7 @@
 {
   "name": "Campus_Contest_Application",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
