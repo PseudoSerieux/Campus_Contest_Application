@@ -1,15 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    />
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
+    <Header style="z-index: 2; max-height: 100px;" />
+    <Nuxt />
     <v-footer
       :fixed="fixed"
       app
@@ -20,7 +12,12 @@
 </template>
 
 <script>
+import Header from '../components/Header'
+
 export default {
+  components: {
+    Header
+  },
   data () {
     return {
       clipped: false,
