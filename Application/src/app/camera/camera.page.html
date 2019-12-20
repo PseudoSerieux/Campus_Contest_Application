@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
     <ion-title>
-      Ionic Camera Plugin
+      Camera
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,12 +14,12 @@
 <ion-content class="ion-padding">
 
 
-  <ion-button expand="block" color="tertiary" (click)="addPhoto('library')">
+  <ion-button expand="block" color="success" (click)="addPhoto('library')">
     <ion-icon slot="start" name="image"></ion-icon>
     Ouvrir la bibliothèque
   </ion-button>
 
-  <ion-button expand="block" color="secondary" (click)="addPhoto('camera')">
+  <ion-button expand="block" color="success" (click)="addPhoto('camera')">
     <ion-icon slot="start" name="camera"></ion-icon>
     Prendre une photo
   </ion-button>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <ion-button expand="block" color="warning" (click)="uploadFirebase()">
+  <ion-button expand="block" color="success" (click)="uploadFirebase()">
     <ion-icon slot="start" name="cloud-upload"></ion-icon>
     Envoyer la photo
   </ion-button>
