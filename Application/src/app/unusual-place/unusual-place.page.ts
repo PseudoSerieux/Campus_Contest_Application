@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   selector: 'app-unusual-place',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnusualPlacePage implements OnInit {
 
-  constructor() { }
+  constructor(public afDB: AngularFireDatabase) { }
 
   ngOnInit() {
   }
+/*
+  add() {
+    this.afDB.list('Users').push({
+      pseudo: 'Nicolas'
+    });
+  }
 
+  delete() {
+    this.afDB.list('Test').remove();
+  }
+  */
 }
