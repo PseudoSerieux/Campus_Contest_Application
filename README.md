@@ -26,3 +26,7 @@ But du site web :
     - Proposer des lieux insolites avec des photos
 
 Le projet se doit d'être intuitif, accessible en français comme en anglais et adapté aux différentes conditions d'utilisations.
+
+Pré-requis d'installation :
+
+    - npm install firebase @angular/fire --save (Base de donnée)
