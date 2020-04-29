@@ -1,5 +1,7 @@
 (Boutons)  Orange = Hexa : FF 94 39   /  RVB : 255 148 57
-(Titre)    Bleu  = Hexa : 6B DB F7   /  RVB : 107 219 247
+
+//(Titre)    Bleu  = Hexa : 6B DB F7   /  RVB : 107 219 247//
+
 (Fond)     Blanc = Hexa : FF FF FF   /  RVB : 255 255 255
 (Header)   Grisé = Hexa : CE CE CE   / 	RVB : 206 206 206
 (Ecriture) Noire = Hexa : 00 00 00   /  RVB : 0 0 0
