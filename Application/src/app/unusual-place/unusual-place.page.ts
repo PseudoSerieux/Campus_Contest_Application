@@ -20,7 +20,7 @@ export class UnusualPlacePage implements OnInit {
   }
 
   delete() {
-    this.afDB.list('Test').remove();
+    this.afDB.list('Randonnees').remove();
   }
-  */
+*/
 }
