@@ -13,7 +13,13 @@
     padding:10px 25px 10px 25px;
 	border-radius:8px;
 	font:bold 16px Arial;
-	color:#707070;
+    color:#707070;
+    text-decoration: none;
+}
+#galerie:hover{
+    color: #ffffff;
+    background: #707070a1;
+    border: none;
 }
 #contact{
     position: absolute;
@@ -24,7 +30,13 @@
     padding:10px 22px 10px 22px;
 	border-radius:8px;
 	font:bold 16px Arial;
-	color:#707070;
+    color:#707070;
+    text-decoration: none;
+}
+#contact:hover{
+    color: #ffffff;
+    background: #707070a1;
+    border: none;
 }
 #connexion{
     position: absolute;
@@ -35,7 +47,12 @@
     padding:10px 20px 10px 20px;
 	border-radius:8px;
 	font:bold 16px Arial;
-	color:#ff9439;
+    color:#ff9439;
+    text-decoration: none;
+}
+#connexion:hover{
+    color: #ffffff;
+    background: #ff9439;
 }
 
 /* div p1 */
