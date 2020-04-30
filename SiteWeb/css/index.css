@@ -77,6 +77,11 @@
     color:#ffffff;
     text-decoration: none;
 }
+#appl:hover{
+    color: #ff9439;
+    background: #ffffff;
+    border:1px solid #ff9439;
+}
 #propos{
     position:absolute;
     top: 60%;
@@ -90,6 +95,11 @@
 	font:bold 20px Arial;
     color:#ffffff;
     text-decoration: none;
+}
+#propos:hover{
+    color: #ff9439;
+    background: #ffffff;
+    border:1px solid #ff9439;
 }
 
 /* div p2 */
@@ -133,6 +143,11 @@
 	font:bold 20px Arial;
     color:#ffffff;
     text-decoration: none;
+}
+#dlapp:hover{
+    color: #ff9439;
+    background: #ffffff;
+    border:1px solid #ff9439;
 }
 
 /* div p3 */
