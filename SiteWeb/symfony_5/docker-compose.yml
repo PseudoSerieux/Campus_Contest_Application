@@ -1,0 +1,79 @@
+version: '3.7'
+services:
+  # Traefik qui sert de reverse-proxy pour gérer les domaines plus facilement avec tous les services docker
+  traefik:
+    image: traefik:v1.7.16
+    restart: always
+    command: --docker
+    ports:
+        - "80:80"
+        - "443:443"   # HTTPS port
+        - "8080:8080"
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock # Pour que Traefik pusisse écouter les événements Docker
+        - ./conf/traefik.toml:/traefik.toml # Fichier de configuration de Traefik
+        - ./conf/acme.json:/acme.json
+    labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=web"
+        - "traefik.port=8080"
+        - "traefik.entryPoint=http,https"
+        - "traefik.backend=traefik"
+    networks:
+        - web
+    container_name: traefik-symfony5
+
+  # Serveur Web pour faire tourner symfony
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./app:/php
+      - ./site-conf/app.symfony.fr.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 81:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.entryPoint=http,https"
+      - "traefik.backend=nginx"
+      - "traefik.frontend.rule=Host:app.symfony.fr"
+      - "traefik.frontend.headers.customResponseHeaders=Access-Control-Allow-Origin:*"
+    networks:
+      - web
+      - intern
+    container_name: nginx-symfony5
+
+  # Service qui contient le PHP et composer pour gérer les dépendances
+  php:
+    build: ./
+    volumes:
+      - ./app:/php
+    labels:
+      - "traefik.enable=false"
+    networks:
+      - intern
+    container_name: php-symfony5
+
+  # La base de donnée
+  postgres:
+    image: postgres
+    volumes:
+      - ./db-data:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    labels:
+      - "traefik.enable=false"
+    environment:         
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=symfonyapp
+    networks:
+      - intern
+    container_name: postgres-symfony5
+
+networks:
+  web:
+    external:
+      name: web
+  intern:
+    external: false

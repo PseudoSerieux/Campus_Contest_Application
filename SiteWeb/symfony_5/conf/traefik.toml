@@ -1,0 +1,30 @@
+debug = false
+
+logLevel = "INFO"
+defaultEntryPoints = ["https", "http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http-node]
+    address = ":85"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+  [entryPoints.api]
+  address = ":8080"
+
+[api]
+entryPoint = "app"
+
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "app.symfony.fr"
+watch = true
+exposedByDefault = false
+
+[acme]
+email = "user@app.com"
+storage = "acme.json"
+entryPoint = "https"

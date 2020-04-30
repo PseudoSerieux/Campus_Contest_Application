@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <style>
+        /* .boutons{
+        position: absolute;
+        margin-left: 50%;
+        top: 1%;
+        } */
+        #galerie{
+            position: absolute;
+            top: 6%;
+            right: 29%;
+            background: #ffffff;
+            border:1px solid #898888;
+            padding:10px 25px 10px 25px;
+            border-radius:8px;
+            font:bold 16px Arial;
+            color:#707070;
+            text-decoration: none;
+        }
+        #galerie:hover{
+            color: #ffffff;
+            background: #707070a1;
+            border: none;
+        }
+        #contact{
+            position: absolute;
+            top:6%;
+            right: 16%;
+            background: #ffffff;
+            border:1px solid #8e7f7f;
+            padding:10px 22px 10px 22px;
+            border-radius:8px;
+            font:bold 16px Arial;
+            color:#707070;
+            text-decoration: none;
+        }
+        #contact:hover{
+            color: #ffffff;
+            background: #707070a1;
+            border: none;
+        }
+        #connexion{
+            position: absolute;
+            top:6%;
+            right: 2%;
+            background: #ffffff;
+            border:1px solid #ff9439;
+            padding:10px 20px 10px 20px;
+            border-radius:8px;
+            font:bold 16px Arial;
+            color:#ff9439;
+            text-decoration: none;
+        }
+        #connexion:hover{
+            color: #ffffff;
+            background: #ff9439;
+        }
+
+        /* div p1 */
+        #imgp1{
+            z-index:1;
+            position: relative;
+            padding: 0;
+            width: 100%;
+            height: 70%;
+        }
+        #appl{
+            position:absolute;
+            top: 60%;
+            left: 27%;
+            z-index:2;
+            font-size:150%;
+            background: #ff9439;
+            border:none;
+            padding:22px 20px 22px 20px;
+            border-radius:25px;
+            font:bold 20px Arial;
+            color:#ffffff;
+            text-decoration: none;
+        }
+        #appl:hover{
+            color: #ff9439;
+            background: #ffffff;
+            border:1px solid #ff9439;
+        }
+        #propos{
+            position:absolute;
+            top: 60%;
+            left: 58%;
+            z-index:2;
+            font-size:150%;
+            background: #ffffff00;
+            border:1px solid #ffffff;
+            padding:22px 20px 22px 20px;
+            border-radius:25px;
+            font:bold 20px Arial;
+            color:#ffffff;
+            text-decoration: none;
+        }
+        #propos:hover{
+            color: #ff9439;
+            background: #ffffff;
+            border:1px solid #ff9439;
+        }
+
+        /* div p2 */
+        #p2{
+            position: relative;
+            margin: 70px auto;
+            z-index: 2;
+        }
+        #hrp2{
+            height: 2px;
+            background-color: #ff9439;
+        }
+        #nomapk{
+            position: relative;
+            left: 8px;
+            font: 30px Arial;
+            color: #ff9439;
+        }
+        /*faire css pour slide*/
+
+        /*fin css pour slide */
+        .textdes{
+            position: absolute;
+            right: 5%;
+        }
+        #description{
+            position: relative;
+            text-align: justify;
+            margin-left: 50%;
+            z-index: 3;
+        }
+        #dlapp{
+            position:absolute;
+            left: 40%;
+            margin-top: 20% ;
+            font-size:150%;
+            background: #ff9439;
+            border:none;
+            padding:22px 20px 22px 20px;
+            border-radius:25px;
+            font:bold 20px Arial;
+            color:#ffffff;
+            text-decoration: none;
+        }
+        #dlapp:hover{
+            color: #ff9439;
+            background: #ffffff;
+            border:1px solid #ff9439;
+        }
+
+        /* div p3 */
+        #p3{
+            position: relative;
+            margin-bottom: 10%;
+            z-index: 1;
+        }
+        #nomprop{
+            position: relative;
+            left: 8px;
+            font: 30px Arial;
+            color: #ff9439;
+        }
+        #hrp3{
+            height: 2px;
+            background-color: #ff9439;
+            width: 100%;
+        }
+        .textprop{
+            position: absolute;
+            right: 5%;
+        }
+        #descprop{
+            position: relative;
+            text-align: justify;
+            margin-left: 5%;
+            z-index: 3;
+        }
+
+        /* footer */
+        footer{
+            background-color: #a4a4a4;
+            padding: 3%;
+        }
+        #ftrcgu{
+            position: relative;
+            left: 50%;
+            color: #ffffff ;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,100 @@
+{% extends './base.html.twig' %}
+
+{% block title %}Hello PictureControllerController!{% endblock %}
+
+{% block body %}
+    <style>
+        #galerie{
+            position: absolute;
+            top: 6%;
+            right: 29%;
+            background: #ffffff;
+            border:1px solid #898888;
+            padding:10px 25px 10px 25px;
+            border-radius:8px;
+            font:bold 16px Arial;
+            color:#707070;
+            text-decoration: none;
+        }
+        #galerie:hover{
+            color: #ffffff;
+            background: #707070a1;
+            border: none;
+        }
+        #contact{
+            position: absolute;
+            top:6%;
+            right: 16%;
+            background: #ffffff;
+            border:1px solid #8e7f7f;
+            padding:10px 22px 10px 22px;
+            border-radius:8px;
+            font:bold 16px Arial;
+            color:#707070;
+            text-decoration: none;
+        }
+        #contact:hover{
+            color: #ffffff;
+            background: #707070a1;
+            border: none;
+        }
+        #connexion{
+            position: absolute;
+            top:6%;
+            right: 2%;
+            background: #ffffff;
+            border:1px solid #ff9439;
+            padding:10px 20px 10px 20px;
+            border-radius:8px;
+            font:bold 16px Arial;
+            color:#ff9439;
+            text-decoration: none;
+        }
+        #connexion:hover{
+            color: #ffffff;
+            background: #ff9439;
+        }
+        /* main */
+        h2{
+            font-size: 200%;
+            text-align: center;
+            color: #ff9439;
+        }
+        /* footer */
+        footer{
+            background-color: #a4a4a4;
+            padding: 3%;
+        }
+        #ftrcgu{
+            position: relative;
+            left: 50%;
+            color: #ffffff ;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+
+    <header>
+        <div id="logo">
+            <a href="/">
+                <img src="#">
+                <h1> CoinCoin Insolite </h1>
+            </a>
+        </div>
+
+        <a href="/gallery/add" id="galerie"> Galerie </a>
+        <a href="/contact" id="contact"> Contact </a>
+        <a href="#" id="connexion"> Connexion </a>
+
+    </header>
+    <main>
+        <br>
+        <h2>Nous contacter</h2>
+        <br>
+        {{ form(form) }}
+    </main>
+    <br><br><br><br>
+    <footer>
+        <a href="#" id="ftrcgu"> CGU </a>
+    </footer>
+{% endblock %}
