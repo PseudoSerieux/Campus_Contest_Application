@@ -4,15 +4,16 @@ import * as L from 'leaflet';
 import('leaflet-routing-machine');
 import 'leaflet-control-geocoder';
 
-
-
 @Component({
   selector: 'app-unusual-place',
   templateUrl: './unusual-place.page.html',
   styleUrls: ['./unusual-place.page.scss'],
 })
 export class UnusualPlacePage implements OnInit {
-  constructor(public afDB: AngularFireDatabase) { }
+  constructor(public afDB: AngularFireDatabase) {
+    /*this.getUsersDatabase();*/
+    this.getPointDatabase();
+  }
 
   ngOnInit() {
 
@@ -35,6 +36,40 @@ export class UnusualPlacePage implements OnInit {
     }).addTo(map);
   }
 
+  /* RECUPERATION POINTS EN BDD */
+  getPointDatabase() {
+
+    this.afDB.list('randonnees/features/0/properties/').snapshotChanges(['child_added']).subscribe(points => {
+      points.forEach(point => {
+        console.log('Point: ' + point.payload.exportVal());
+        /*this.GetDetailsPoints(point);*/
+      });
+    });
+    /*return 'Point: ' + point.payload.exportVal();*/
+  }
+
+/* ENVOI DETAILS POINTS */
+/*
+  GetDetailsPoints(point: any) {
+    console.log(point);
+    this.points.push({
+      valeur: point.payload.exportVal()
+    });
+  }
+*/
+
+/* TEST RECUPERATION DES UTILISATEURS EN BDD */
+/*
+  getUsersDatabase() {
+    this.afDB.list('Users/').snapshotChanges(['child_added']).subscribe(users => {
+      users.forEach(user => {
+        console.log('User: ' + user.payload.exportVal().pseudo);
+      });
+    });
+  }
+*/
+
+/* BOUTON AJOUT VALEUR BDD + BOUTON SUPPRESION TABLE */
 /*
   add() {
     this.afDB.list('Users').push({
@@ -46,6 +81,8 @@ export class UnusualPlacePage implements OnInit {
     this.afDB.list('Randonnees').remove();
   }
 */
+
+
 
 
 }
