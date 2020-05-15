@@ -15,6 +15,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
+
 export const firebaseConfig = {
   apiKey: 'AIzaSyC2HtFzQsTh9HUYB-SlVUqQlusjBBVj_pI',
   authDomain: 'coincoins-insolites-b70a2.firebaseapp.com',
