@@ -13,6 +13,8 @@ export class UnusualPlacePage implements OnInit {
   constructor(public afDB: AngularFireDatabase) {
     /*this.getUsersDatabase();*/
     this.getPointDatabase();
+    /*this.getLatitudePoint();*/
+   /* this.getLongitudePoint();*/
   }
 
   ngOnInit() {
@@ -37,20 +39,46 @@ export class UnusualPlacePage implements OnInit {
   }
 
   /* RECUPERATION POINTS EN BDD */
-  getPointDatabase() {
 
-    this.afDB.list('randonnees/features/0/properties/').snapshotChanges(['child_added']).subscribe(points => {
+  getPointDatabase() {
+    for (let i = 0; i <= 573; i++) {
+    this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
       points.forEach(point => {
         console.log('Point: ' + point.payload.exportVal());
-        /*this.GetDetailsPoints(point);*/
+
       });
     });
-    /*return 'Point: ' + point.payload.exportVal();*/
+    }
   }
+
+/*
+  getLatitudePoint() {
+    for (let i = 0; i <= 573; i++) {
+      this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
+        points.forEach(point => {
+          console.log('LATITUDE: ' + point.payload.val());
+        });
+      });
+    }
+  }
+*/
+
+  /*
+  getLongitudePoint() {
+    for (let i = 0; i <= 573; i++) {
+      this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
+        points.forEach(point => {
+          console.log('LONGITUDE: ' + point.payload.exportVal());
+        });
+      });
+    }
+  }
+  */
+
 
 /* ENVOI DETAILS POINTS */
 /*
-  GetDetailsPoints(point: any) {
+  getDetailsPoints(point: any) {
     console.log(point);
     this.points.push({
       valeur: point.payload.exportVal()
