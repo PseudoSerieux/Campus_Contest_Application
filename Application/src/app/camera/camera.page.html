@@ -9,27 +9,44 @@
 
 <ion-content class="ion-padding">
 
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="success" (click)="addPhoto('library')">
+        <ion-icon slot="start" name="image"></ion-icon>
+        Ouvrir la bibliothèque
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
-  <ion-button expand="block" color="success" (click)="addPhoto('library')">
-    <ion-icon slot="start" name="image"></ion-icon>
-    Ouvrir la bibliothèque
-  </ion-button>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="success" (click)="addPhoto('camera')">
+        <ion-icon slot="start" name="camera"></ion-icon>
+        Prendre une photo
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
-  <ion-button expand="block" color="success" (click)="addPhoto('camera')">
-    <ion-icon slot="start" name="camera"></ion-icon>
-    Prendre une photo
-  </ion-button>
+  <ion-row>
+    <ion-col>
+      <div class="flex">
+        <div class="img-box">
+          <img [src]="image">
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
 
-  <div class="flex">
-    <div class="img-box">
-      <img [src]="image">
-    </div>
-  </div>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="success" (click)="uploadFirebase()">
+        <ion-icon slot="start" name="cloud-upload"></ion-icon>
+        Envoyer la photo
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
-  <ion-button expand="block" color="success" (click)="uploadFirebase()">
-    <ion-icon slot="start" name="cloud-upload"></ion-icon>
-    Envoyer la photo
-  </ion-button>
-
+</ion-grid>
 
 </ion-content>
