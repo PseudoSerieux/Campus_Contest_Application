@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Geolocation} from '@ionic-native/geolocation/ngx';
-
-declare var google: any;
+import {AngularFireDatabase} from '@angular/fire/database';
+import * as L from 'leaflet';
+import('leaflet-routing-machine');
+import 'leaflet-control-geocoder';
 
 @Component({
   selector: 'app-maps',
@@ -9,76 +10,107 @@ declare var google: any;
   styleUrls: ['./maps.page.scss'],
 })
 export class MapsPage implements OnInit {
-  map: any;
   baseUrl = 'assets/icon/';
 
-  constructor(public geolocation: Geolocation) {
-    this.load();
+  constructor(public afDB: AngularFireDatabase) {
+     /*this.getUsersDatabase();*/
+     this.getPointDatabase();
+     /*this.getLatitudePoint();*/
+    /* this.getLongitudePoint();*/
+   
   }
-
-
-  load() {
-
-    this.geolocation.getCurrentPosition().then((resp) => {
-      let lat = resp.coords.latitude;
-      let lng = resp.coords.longitude;
-      const latLng = new google.maps.LatLng(lat, lng);
-      this.map = new google.maps.Map(document.getElementById('map_canvas'), {
-        zoom: 14,
-        center: latLng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: false
-      });
-
-
-      this.addMyPosition(latLng);
-      this.addMarkerPosition();
-      /*this.addCarPosition();*/
-    });
-  }
-
-  addMyPosition(latLng) {
-    const marker = new google.maps.Marker({
-      map: this.map,
-      position: latLng,
-      animation: google.maps.Animation.DROP,
-      title: 'My position'
-    });
-    this.addInfoWindowToMarker(marker);
-  }
-
-  addInfoWindowToMarker(marker) {
-    const infoWindowContent = '<div id="content">' + marker.title + '</div>' + '<div>' + marker.src  + '</div>';
-    const infoWindow = new google.maps.InfoWindow({
-      content: infoWindowContent
-    });
-    marker.addListener('click', () => {
-      infoWindow.open(this.map, marker);
-    });
-  }
-
-  addMarkerPosition() {
-    const icon = this.baseUrl + 'AppPhoto.png';
-    const latLng = new google.maps.LatLng(47.273165, -1.573204);
-    const marker = new google.maps.Marker({
-      map: this.map,
-      position: latLng,
-      animation: google.maps.Animation.DROP,
-      title: '<p text-center=""><strong>regarde commen c tro joli!!!!!!!!!</strong></p>',
-      src: '<img src=../../assets/picture/android-vs-ios.jpg height="150">',
-      icon: {
-        url: icon,
-        size: new google.maps.Size(32, 32),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(16, 16),
-        scaledSize: new google.maps.Size(32, 32)
-      }
-    });
-    this.addInfoWindowToMarker(marker);
-  }
-
 
   ngOnInit() {
+
+    const map = L.map('map').setView([0, 0], 2);
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+    L.marker([57.73, 11.94]).addTo(map)
+        .bindPopup('Pop-up test')
+        .openPopup();
+    L.Routing.control({
+          waypoints: [
+            L.latLng(57.74, 11.94),
+            L.latLng(57.6792, 11.949)
+          ],
+          routeWhileDragging: true,
+          /*geocoder: L.Control.Geocoder.nominatim(),*/
+    }).addTo(map);
   }
+
+  /* RECUPERATION POINTS EN BDD */
+
+  getPointDatabase() {
+    for (let i = 0; i <= 573; i++) {
+    this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
+      points.forEach(point => {
+        console.log('Point: ' + point.payload.exportVal());
+
+      });
+    });
+    }
+  }
+
+/*
+  getLatitudePoint() {
+    for (let i = 0; i <= 573; i++) {
+      this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
+        points.forEach(point => {
+          console.log('LATITUDE: ' + point.payload.val());
+        });
+      });
+    }
+  }
+*/
+
+  /*
+  getLongitudePoint() {
+    for (let i = 0; i <= 573; i++) {
+      this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
+        points.forEach(point => {
+          console.log('LONGITUDE: ' + point.payload.exportVal());
+        });
+      });
+    }
+  }
+  */
+
+
+/* ENVOI DETAILS POINTS */
+/*
+  getDetailsPoints(point: any) {
+    console.log(point);
+    this.points.push({
+      valeur: point.payload.exportVal()
+    });
+  }
+*/
+
+/* TEST RECUPERATION DES UTILISATEURS EN BDD */
+/*
+  getUsersDatabase() {
+    this.afDB.list('Users/').snapshotChanges(['child_added']).subscribe(users => {
+      users.forEach(user => {
+        console.log('User: ' + user.payload.exportVal().pseudo);
+      });
+    });
+  }
+*/
+
+/* BOUTON AJOUT VALEUR BDD + BOUTON SUPPRESION TABLE */
+/*
+  add() {
+    this.afDB.list('Users').push({
+      pseudo: 'Nicolas'
+    });
+  }
+
+  delete() {
+    this.afDB.list('Randonnees').remove();
+  }
+*/
 
 }

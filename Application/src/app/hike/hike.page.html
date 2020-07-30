@@ -11,34 +11,41 @@
 
 <img src="../assets/picture/hike.jpg">
 
-  <ion-row text-center>
 
+<!-- Search a hiking -->
+
+  <ion-row text-center>
     <ion-col text-center>
 
-    <ion-select placeholder="Localisation" class="hike-criteria">
-      <ion-select-option class="hike-choice" value="f"></ion-select-option>
-      <ion-select-option class="hike-choice" value="m"></ion-select-option>
-      <button class="button-close">Annuler</button>
-    </ion-select>
+      <!-- Localisation || pending Leaflet API -->
 
-    <ion-select placeholder="Accessibilité" class="hike-criteria">
-    <ion-select-option class="hike-choice" value="foot">A pied</ion-select-option>
-    <ion-select-option class="hike-choice" value="bike">En Vélo</ion-select-option>
-      <button class="button-close">Annuler</button>
-    </ion-select>
+      <!--
+      <ion-select placeholder="Localisation" class="hike-criteria">
+        <ion-select-option class="hike-choice"></ion-select-option>
+        <ion-select-option class="hike-choice"></ion-select-option>
+        <button class="button-close">Annuler</button>
+      </ion-select>
+      -->
 
-    <ion-select placeholder="Duree" class="hike-criteria">
-      <ion-select-option class="hike-choice" value="f">Moins d'une heure</ion-select-option>
-      <ion-select-option class="hike-choice" value="m">Entre 1h et 2h</ion-select-option>
-      <ion-select-option class="hike-choice" value="f">Plus de 2h</ion-select-option>
-      <button class="button-close">Annuler</button>
-    </ion-select>
+      <!-- Acces -->
+      <ion-select placeholder="Accessibilité" class="hike-criteria">
+      <ion-select-option class="hike-choice" value="foot">A pied</ion-select-option>
+      <ion-select-option class="hike-choice" value="bike">En Vélo</ion-select-option>
+        <button class="button-close">Annuler</button>
+      </ion-select>
+
+      <!-- Duration -->
+      <ion-select placeholder="Duree" class="hike-criteria">
+        <ion-select-option class="hike-choice" value="less-than-an-hour">Moins d'une heure</ion-select-option>
+        <ion-select-option class="hike-choice" value="between-1h-and-2h">Entre 1h et 2h</ion-select-option>
+        <ion-select-option class="hike-choice" value="more-than-2h">Plus de 2h</ion-select-option>
+        <button class="button-close">Annuler</button>
+      </ion-select>
 
     </ion-col>
-
   </ion-row>
 
-
+  <!-- Button submit => Search Hiking -->
   <div text-center>
     <ion-button class="button-search-hike" color="success">Rechercher</ion-button>
   </div>
