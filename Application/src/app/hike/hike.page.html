@@ -9,11 +9,10 @@
 
 <ion-content>
 
-<img src="../assets/picture/hike.jpg">
-
+<ion-img src="../assets/picture/hike.jpg"></ion-img>
 
 <!-- Search a hiking -->
-
+<ion-grid>
   <ion-row text-center>
     <ion-col text-center>
 
@@ -33,7 +32,12 @@
       <ion-select-option class="hike-choice" value="bike">En Vélo</ion-select-option>
         <button class="button-close">Annuler</button>
       </ion-select>
+    </ion-col>
 
+  </ion-row>
+  
+  <ion-row>
+    <ion-col>
       <!-- Duration -->
       <ion-select placeholder="Duree" class="hike-criteria">
         <ion-select-option class="hike-choice" value="less-than-an-hour">Moins d'une heure</ion-select-option>
@@ -41,14 +45,16 @@
         <ion-select-option class="hike-choice" value="more-than-2h">Plus de 2h</ion-select-option>
         <button class="button-close">Annuler</button>
       </ion-select>
-
     </ion-col>
   </ion-row>
+</ion-grid>
 
   <!-- Button submit => Search Hiking -->
   <div text-center>
     <ion-button class="button-search-hike" color="success">Rechercher</ion-button>
   </div>
+
+
 
 </ion-content>
 
