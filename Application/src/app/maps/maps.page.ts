@@ -17,7 +17,45 @@ export class MapsPage implements OnInit {
      this.getPointDatabase();
      /*this.getLatitudePoint();*/
     /* this.getLongitudePoint();*/
-   
+  }
+
+  getPointDatabase(){
+    for (let i = 0; i <= 573; i++) {
+    this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
+      //console.log(points);
+      //console.log(points[0]);
+      //console.log("test1");
+      points.forEach(point => {
+        
+        //console.log(point);
+        if (point.key == "LONGITUDE") {
+          //console.log("test2");
+          //console.log(point.key);
+          //console.log('dans la boucle');
+          var longitude: number;
+          longitude = point.payload.exportVal();
+         // this.getDataLongitude(longitude);
+          return longitude;
+        //  console.log(longitude);
+
+        } else if (point.key == "LATITUDE") {
+          //console.log("test3");
+          //console.log(point.key);
+          //console.log('dans la boucle');
+        
+          var latitude: Number;
+          latitude = point.payload.exportVal();
+          //this.getDataLatitude(latitude);
+          return latitude;
+          //console.log(latitude);
+         
+
+        } else {
+          //test return format number
+        }
+      });
+    });
+    }
   }
 
   ngOnInit() {
@@ -35,7 +73,7 @@ export class MapsPage implements OnInit {
 
     L.Routing.control({
           waypoints: [
-            L.latLng(57.74, 11.94),
+            L.latLng(47.26, -1.48),
             L.latLng(57.6792, 11.949)
           ],
           routeWhileDragging: true,
@@ -43,39 +81,9 @@ export class MapsPage implements OnInit {
     }).addTo(map);
   }
 
+  
+
   /* RECUPERATION POINTS EN BDD */
-
-  getPointDatabase() {
-    for (let i = 0; i <= 573; i++) {
-    this.afDB.list('randonnees/features/' + i + '/properties/').snapshotChanges(['child_added']).subscribe(points => {
-      //console.log(points);
-     // console.log(points[0]);
-
-      points.forEach(point => {
-        
-        //console.log(point);
-        if (point.key == "LONGITUDE") {
-          //console.log(point.key);
-          //console.log('dans la boucle');
-          const longitude = [point.payload.exportVal()];
-          return longitude;
-
-        } else if (point.key == "LATITUDE") {
-          //console.log(point.key);
-          //console.log('dans la boucle');
-          const latitude = [point.payload.exportVal()];
-
-          return latitude
-
-        } else {
-          return "";
-        }
-
-
-      });
-    });
-    }
-  }
 
 /*
   getLatitudePoint() {
